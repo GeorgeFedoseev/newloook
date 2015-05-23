@@ -1,0 +1,371 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mysql_er",
+				"mysql_error"
+			],
+			[
+				"P",
+				"Physics"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"ma",
+				"margin-right"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"strre",
+				"str_replace"
+			],
+			[
+				"fie",
+				"file"
+			],
+			[
+				"he",
+				"hideKeyboard"
+			],
+			[
+				"mysql_conn",
+				"mysql_connect"
+			],
+			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"border",
+				"border-left"
+			],
+			[
+				"fot",
+				"font-family"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"tes",
+				"testimonials_carousel"
+			],
+			[
+				"phase",
+				"steps_phase_header"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"fn",
+				"font-family"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"expl",
+				"expl_button"
+			],
+			[
+				"re",
+				"Regular"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"nor",
+				"no-repeat"
+			],
+			[
+				"paddi",
+				"padding-left"
+			],
+			[
+				"get",
+				"getmore"
+			],
+			[
+				"bo",
+				"bottom"
+			],
+			[
+				"bak",
+				"background-repeat"
+			],
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"pa",
+				"padding-bottom"
+			],
+			[
+				"idea",
+				"idea_benefits"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"no",
+				"no-repeat"
+			],
+			[
+				"border-s",
+				"border-style"
+			],
+			[
+				"top",
+				"topbanner_form"
+			],
+			[
+				"rgb",
+				"rgba()"
+			],
+			[
+				"nav",
+				"navbar-static-top"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "session/buy.html",
+			"settings":
+			{
+				"buffer_size": 15,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Applications/MAMP/htdocs/bd.php",
+		"/Applications/MAMP/htdocs/login/save_user.php",
+		"/Applications/MAMP/htdocs/index.php",
+		"/Applications/MAMP/htdocs/menu.html",
+		"/Users/George/Projects/mnemoria/platforms/android/src/com/android/vending/billing/IInAppBillingService.aidl",
+		"/Applications/MAMP/htdocs/game",
+		"/Users/George/Desktop/upload.php",
+		"/Users/George/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/George/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/George/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"OK",
+			"key",
+			"billing",
+			"key",
+			"youtube",
+			"video",
+			"940",
+			"146",
+			"enter",
+			"auto_complete_commit_trigger_characters",
+			"comple\ncom",
+			"comple\ncompl",
+			"compl"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "session/buy.html",
+					"settings":
+					{
+						"buffer_size": 15,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7,
+								7
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 204.0,
+	"status_bar_visible": true
+}

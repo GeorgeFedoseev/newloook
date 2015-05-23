@@ -1,0 +1,30 @@
+<html>
+	<head>	
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+<body>
+<div id=header>
+	<img src="logo.png" class=logo>
+	<h1 class=header_logo_text> Агенство имиджевой фотографии NewLook </h1>
+	<div class="menu header_logo_text">
+		
+		<a href="/index.php" class="text_menu text_menu_2"> Главная </a>
+		<a href="/session/index.php" class="text_menu text_menu_2"> Фотосессии </a>
+		<a href="/projects/index.php" class="text_menu text_menu_2"> Фотопроекты </a>
+		<a href="" class="text_menu text_menu_2"> Контакты </a>
+		<a href="/session/buy.php" class="text_menu text_menu_2"> Заказать фотосессию </a>
+		<?
+		if(isset($_SESSION['login']))    {
+				 echo('<a href="" class="text_menu text_menu_2"> Личный кабинет </a>');
+				 echo('<a href="/login/log_out.php" class="text_menu text_menu_2"> Выйти </a>');
+			}
+			else echo('<a href="/login/login.php" class="text_menu text_menu_2"> Вход </a>');
+		?>
+		<?
+			if(isset($_SESSION) && isset($_SESSION['role']) && $_SESSION['role']=='10'){
+				echo ("<a href='/adm/adm_port.php' class='text_menu text_menu_2'> Админка </a>");
+			}
+		?>
+	</div>
+</div>
+</body></html>

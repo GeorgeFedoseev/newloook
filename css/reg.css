@@ -1,0 +1,78 @@
+body{
+	min-width: 1200px;
+}
+.come_in{
+	text-align: center;
+	position: absolute;
+	left: 40%;
+}
+.form_reg_h1{
+	font-size: 60px;
+	font-weight: bold;
+}
+.form_come_h1{
+	font-size: 60px;
+	font-weight: bold;
+}
+.form_reg{
+	border: 1px solid gray; 
+	border-radius: 10px;
+	width: 300px; 
+	top: 200px;
+	font-size: 20px;
+	text-align:center;
+}
+.form_p{
+	margin: 5px 0px 5px 0;
+}
+.form_div{
+	margin-bottom: 20px;
+	margin-top: 7px;
+}
+.form_butt{
+	text-align: center;
+	margin-top: 10px;
+	background: white;
+	padding: 5px;
+	border: 1px solid grey;
+	border-radius: 4px;
+	transition: 1s;
+	width: 150px;
+	font-family: GroticCn;
+	font-size: 20px;
+}
+.form_butt:hover{
+	background: #CCCCCC;
+	transition: 1s;
+}
+.form_text{
+	background: white;
+	border: 1 solid grey; 
+	border-radius: 4px;
+	padding: 5px;
+	width: 150px;
+}
+.reg_success{
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+	margin-top: 100px;
+}
+.href_reg{
+	color: grey;
+	transition: 1s;
+}
+.href_reg:hover{
+	color: black;
+	transition: 1s;
+}
+.error_reg{
+	text-align: center;
+}
+.form_reg_p{
+
+	
+}
+.form_butt_2{
+	margin-top: -25px;
+}

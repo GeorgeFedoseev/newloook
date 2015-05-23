@@ -1,0 +1,31 @@
+body{
+	
+}
+h1.block_h1_session{
+	position: absolute; 
+	left: 41%;
+	font-size: 60px;
+	font-weight: bold;
+}
+.session_menu{
+	position: absolute;
+	top: 150px;
+	width: 100%;
+	height: 40px;
+	background: rgba(0,0,0,0.1);
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 30px;
+	
+}
+.punkt_menu_session{color: black;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+.ps{	
+	opacity: 0.5;
+}
+.ps:hover{
+	opacity: 1;
+	transition: 1s;
+}

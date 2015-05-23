@@ -1,0 +1,328 @@
+/* MAIN */
+
+.b_main_page{
+    position: absolute;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.b_main{    
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top: 80px;        
+}
+
+.b_header h2{
+    text-align: center;
+    width: 100%;    
+    
+}
+
+
+.b_header{
+    
+}
+
+.b_nav{        
+    margin-top: 180px;    
+}
+
+.b_main button{
+  text-align: center;  
+  background: white;
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 4px;      
+  font-size: 20px;
+  cursor: pointer;
+}
+
+    .b_main button:active{
+        background-color: gainsboro;
+    }
+
+
+/* GLOBAL */
+.b_card {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(232, 232, 232, 0.36);
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.2s all ease;
+}
+
+    .b_card:hover, .b_card.selected{        
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.43);
+    }
+
+    .b_card.selected{
+        background-color: rgba(232, 232, 232, 1);
+    }
+
+.b_card_pic {    
+    height: 200px;
+    background-size: cover;
+    border-radius: 10px;
+    
+}
+
+.b_card_title {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.b_card_desc {
+    margin-top: 10px;
+}
+
+
+.b_buttons{
+    width: 60%;
+    margin: 0 auto; 
+    text-align: center;
+    margin-top: 20px;
+}
+
+.b_nav_button {
+    float: left;
+    font-size: 16px!important;    
+    padding: 5px 10px 5px 10px !important;
+}
+
+.b_main button.b_right {
+    float: right;    
+    
+}
+
+.b_main button.centered{
+    float: none;
+}
+
+.b_main button.disabled{
+    opacity: .5;
+    pointer-events: none;
+}
+
+.b_main button.selected{
+    background: rgba(232, 232, 232, 0.96);
+    pointer-events: none;
+}
+
+
+
+
+/* cart */
+
+.b_cart {
+    float: right;
+}
+
+.b_cart_icon {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.b_cart_cost {
+    display: inline-block;
+    font-size: 25px;
+}
+
+
+
+
+.b_page{
+    position: relative;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+    background: white;
+}
+
+
+/* PAGE-SPECIFIC */
+
+.b_session_types {
+    
+}
+
+.b_select_people_number {
+    text-align: center;    
+    transition: all ease 0.2s;
+    margin-bottom: 20px;
+    
+}
+
+.b_select_people_number .b_controls{
+    
+}
+
+.b_select_people_number .b_controls button{
+    font-size: 20px;
+    padding: 7px
+}
+
+.b_select_people_number .b_controls .b_people_number{
+    display: inline-block;
+    font-size: 25px;
+    padding: 5px;
+}
+
+
+/* SELECT STYLE */
+.b_styles{
+    max-width: 800px;
+}
+
+.b_styles .b_card{
+    width: 150px;
+}
+
+.b_styles .b_card .b_card_pic{
+    height: 100px;
+}
+
+/* SELECT LOCATION */
+.b_location{
+    
+}
+
+.b_location .b_card{    
+    width: 150px;    
+    vertical-align: top;
+}
+
+.b_location .b_card .b_card_pic{
+    height: 100px;
+}
+
+.b_location .b_card .b_card_desc {
+    position: relative;
+    height: 80px;        
+}
+
+.b_location .b_card .b_card_desc span{
+     position: relative;
+     display: inline-block;
+     top: 50%;
+     transform: translateY(-50%);
+}
+
+/* SEARCH LOCATION */
+.b_search_location{
+    max-width: 700px;
+}
+
+.b_search_location .b_search_select_type{
+    max-width: 300px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.b_search_container{
+    
+}
+
+.b_search_left{
+    width: 250px;
+    display: inline-block;
+    
+}
+
+.b_searchbox{
+    float: left;;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 15px;
+    background: rgba(232, 232, 232, 0.96);
+    width: 200px;
+    border-radius: 10px;
+}
+
+
+.b_searchbox h3{
+    text-align: center!important;
+}
+
+.b_searchbox .label{
+    text-align: left;
+}
+
+.b_searchbox textarea{
+    resize: none;
+    max-height: 200px;
+}
+
+.b_notice{
+    
+}
+
+.b_search_results{
+    float: right;
+    display: inline-block;
+    width: 445px;
+    min-height: 100px;
+}
+
+.b_search_results .b_card {
+    position: relative;
+    width: 100%;    
+    text-align: left;
+    height: 100px;
+}
+
+.b_search_results .b_card .b_card_pic{
+    float: left;
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+}
+
+.b_search_results .b_card .b_card_title{
+    float: right;
+    width: 320px;
+} 
+
+
+
+.b_search_results .b_card .b_card_desc {
+    display: inline-block;
+    width: 320px;
+    float: right;
+    top: 0;
+    transform: none;
+}
+
+
+
+
+/* TWEAKS */
+
+.page{
+    position: absolute;
+    width: 100%;
+}
+
+.ng-hide-add.ng-hide-add-active,
+.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
+
+.ng-hide:not(.ng-hide-animate) {
+  opacity: 0;
+  padding: 0 10px;
+  display: block !important;
+  height: 0;
+  pointer-events: none;
+   
+}
+
+

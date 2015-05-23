@@ -1,0 +1,62 @@
+body{
+	
+}
+.all_adm{
+	margin-top: -30px;
+}
+.table_inline{
+	display: inline-block;
+}
+.table_port{
+	width: 312px;
+	border: 1px solid black;
+	border-radius: 4px;
+	margin-bottom: 2px;
+}
+.table_proj{
+	width: 300px;
+	height: 800px;
+	border: 1px solid black;
+	margin-bottom: 2px;
+}
+.photo_port{
+	width: 150px;
+}
+.td_proj{
+	width: 300px;
+}
+.photo_proj{
+	height: 300px;
+}
+.div_adm{
+	margin-top: 10px;
+	margin-left: 120px;
+}
+.form_port_adm{
+	height: 200px;
+}
+.form_butt_1{
+	padding: 0px;
+	width: 100px;
+}
+.form_text{
+	font-size: 15px;
+	margin: 0;
+}
+.form_text:hover{
+	background: white;
+}
+.button_change{
+margin-top: -10px;
+font-size:18px; 
+font-family: GroticCn; 
+border: 1px solid black; 
+border-radius: 4px;
+background: white;'
+}
+.button_change:hover{
+	background: #CCCCCC;
+}
+.form_inline{
+	display: inline;
+}

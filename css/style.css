@@ -1,0 +1,216 @@
+@font-face {
+    font-family: GroticCn; /* Гарнитура шрифта */
+    src: url(fonts/a_groticcn.ttf); /* Путь к файлу со шрифтом */
+   }
+ a{
+	text-decoration: none;
+ }
+body{
+	background: white;
+	margin: 0px;
+	font-family: GroticCn;
+}
+a{
+	color: black;
+}
+#header{
+	background: #FFFFFF;
+	opacity: 0.8;
+	position:fixed;
+	top: 0px;
+	width: 100%;
+	height: 45px;
+	min-width: 1200px;
+	z-index: 999;
+}
+#header:hover{
+	opacity: 1;
+	transition: 1s;
+}
+.logo{
+	width: 36px;
+	height: 36px;
+	margin-left: 50px;
+	margin-top: 4px;
+}
+.header_logo_text{
+	font-family: GroticCn;
+	color: #595858;
+	margin-left: 105px;
+	margin-top: -32px;
+	font-size: 1.4em;
+}
+.text_menu{
+	transition: 1s;
+	opacity: 0.5;	
+}
+.text_menu:hover{
+	transition: 1s;
+	opacity: 1;
+}
+.text_menu_2{
+	transition: 0s;
+	margin-right: 10px;
+}
+.menu{
+
+	text-align:right;
+	margin-top: -43px;
+	font-weight: bold;
+	margin-right: 50px;
+}
+
+#slider{
+	margin-top: -20px;
+}
+.slider{
+	width:100%;
+	min-width:1200px;
+
+}
+h1.slider_h1{
+	position: absolute; 
+	color: #7698a9;
+	left: 16%;
+	top:60px;
+	font-size: 3em;
+}
+img.slider_sea{
+	position: absolute;
+	left: 14%;
+	top: 150px;
+	width: 500px;
+	opacity: 0.8;
+	border-radius: 1em;
+	padding: 10px 0px 0px 10px;
+}
+input[type="text"]:focus { outline: none; }
+
+.form1{ /*Настройка формы*/
+	outline:none;
+	margin-left:5px;	
+	border-bottom-left-radius:10px;
+    border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	border: 1;
+	text-align: left;
+	font-size: 23px;
+	font-family: GroticCn;
+	padding-left: 20px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	margin-left: -6px;
+	margin-top: 10px;
+}
+
+.button { /*Настройка кнопки первой формы*/
+	width: 178px;
+	height: 37px;
+	margin-top: 10px;
+	margin-left: -5px;	
+	margin-right: 7px;
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 16px/100% GroticCn;
+	font-weight: bold;
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+.orange { /*Настройка цвета певой кнопки*/
+	font-size: 20px;
+	color: #6895a8;
+	border: solid 3px #85a8b8;
+	background: rgba(230, 238, 242, 0.6);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#dedad9', endColorstr='#7698a9');
+}
+.orange:hover {
+	background: #e6eef2;
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#86a6b6');
+}
+.orange:active {
+	color: #54869b;
+	background: #e6eef2;
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#618699');
+}
+
+.slider_input_name{
+	position: absolute;
+	left: 24%;
+	top: 355px; 
+	border-radius: 1em;
+	padding: 0px 5px 0px 10px;
+	font-size: 1.4em;
+}
+p.slider_text_photosession{
+	position: absolute;
+	left: 24%;
+	top: 270px;
+	font-size: 1.7em;
+	color: #60889c;
+}
+/*******************Наши предложения**********************/
+.block_deals{
+	
+}
+h1.block_h1{
+	position: absolute; 
+	left: 36%;
+	font-size: 60px;
+	font-weight: bold;
+}
+.block_deals_table{
+}
+.block_deals_img{
+	margin-top:150px;
+	width: 300px;
+}
+.table_deals_h2{
+	font-size: 35px;
+	margin-top: 5px;
+}
+.table_deals_p{
+	margin-top: -25px;
+	font-size: 20px;
+}
+/************БЛОК ПРЕИМУЩЕСТВА**************/
+.block_benef_img{
+	margin-top:150px;
+	
+	height: 150px;
+	margin-left: 38px;
+	margin-right: 38px;
+}
+.block_benef_img_2{
+	margin-top:20px;
+	height: 150px;
+	margin-left: 38px;
+	margin-right: 38px;
+}
+.table_benef_h2{
+	font-size: 25px;
+	margin-top: 15px;
+	font-weight: bold;
+}
+.table_benef_p{
+	margin-top: -10px;
+	font-size: 20px;
+}
+input{
+	outline: none;
+}
+button{
+	outline: none;
+}

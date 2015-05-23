@@ -1,0 +1,20 @@
+изменение привилегий 
+изменение фотопроекта
+добавление фотопроекта
+добавление фотографии 
+			<?
+				$server="localhost";
+				$user="root";
+				$pass="";
+				$DB="newlook";
+				mysql_connect($server,$user,$pass) or die("Нет коннекта!");
+				mysql_select_db($DB);
+				$request= "SELECT id_photo, way_photo, style_photo FROM portfolio WHERE id_pr=".$id;
+				$result=mysql_query($request);
+
+	
+	
+				while($row=mysql_fetch_array($result)){		
+				
+				}
+			?>
