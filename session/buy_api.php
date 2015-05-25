@@ -54,6 +54,10 @@ if(isset($_GET["req"])){
                     echo json_encode(array("error" => "no query"));
                 }
             break;
+        case "events":
+                 echo json_encode(array("error" => false, 
+                                      "events" => getEvents()));
+            break;
         default: 
             echo json_encode(array("error" => "Unknown request ".$_GET["req"]));
     }
@@ -63,8 +67,73 @@ if(isset($_GET["req"])){
 }
 
 
+function getEvents($approved = true){
+    $approved = (bool)$approved;
+    $result = array();
+    $query = mysql_query("SELECT date_order, time_order, amount_hours FROM order_photosession
+                    WHERE approved = $approved");
+    while ($row = mysql_fetch_assoc($query)){
+        $result[] = $row;
+    }
+    
+    return $result;
+}
+
 function calculateCost($order){
-    return 50 * $order->people_number;   
+    /*
+        type: ["individual"|"several"|"lovestory"|"family"],
+        people_number: 1,
+        style: [1-8],
+        location: 1,
+        stylist: 0,
+        visagist: 0,
+        florist: 0,
+        date: "2015-05-25",
+        time: "9:00",
+        hours: 1
+    */
+    
+    $total_price = 0;
+        
+    $main_service_price = $order->people_number * 500;
+    
+    $location_price = 0;
+    
+    $location = getLocation($order->location);
+
+    if($location->id_type_location == 2){
+        // studio - per hour price
+        $location_price = $order->hours * $location->price;
+    }else{
+        // simple location - pay only for entrance
+        $location_price = (int)$location->price;
+    }
+    
+    $visagist_price = $order->visagist*800;
+    $stylist_price = $order->stylist*700;
+    $florist_price = $order->florist*500;
+    
+    $total_price = $main_service_price 
+                + $location_price
+                + $visagist_price
+                + $stylist_price
+                + $florist_price;
+    
+    
+    return array(
+        "main_service_price" => $main_service_price,
+        "location_price" => $location_price,
+        "visagist_price" => $visagist_price,
+        "stylist_price" => $stylist_price,
+        "florist_price" => $florist_price,
+        "total" => $total_price
+    );   
+}
+
+function getLocation($loc_id){
+    $loc_id = (int) $loc_id;
+    $query = mysql_query("SELECT price, id_type_location FROM location WHERE id_location = $loc_id");
+    return (object)mysql_fetch_assoc($query);
 }
 
 function searchLocations($query){

@@ -34,7 +34,7 @@
 		 
 		$result = mysql_query("SELECT * FROM users WHERE login='$login'",$db); //извлекаем из базы все данные о пользователе с введенным логином
 			$myrow = mysql_fetch_array($result);
-			if (empty($myrow['password']))
+			if (empty($myrow['password_md5']))
 			{
 			//если пользователя с введенным логином не существует
 				 include("../menu.html");
@@ -44,14 +44,14 @@
 			}
 			else {
 			//если существует, то сверяем пароли
-			if ($myrow['password']==$password) {
+			if ($myrow['password_md5']==md5($password)) {
 			//если пароли совпадают, то запускаем пользователю сессию! Можете его поздравить, он вошел!
 			$_SESSION['login']=$myrow['login']; 
 			$_SESSION['id_user']=$myrow['id_user'];
 			$_SESSION['role']=$myrow['role'];//эти данные очень часто используются, вот их и будет "носить с собой" вошедший пользователь
 			include("../menu.html");
 			echo "<p class='reg_success'>Вы успешно вошли на сайт! Вы будете перенаправлены на главную страницу через несколько секунд <br> <a href='../index.php' class='href_reg'>Главная страница</a></p>";
-			echo "<script Language=\"JavaScript\"> setTimeout(\"document.location='../index.php'\", 5000); </script>";
+			echo "<script Language=\"JavaScript\"> setTimeout(\"document.location='../index.php'\", 2000); </script>";
 			}
 		 else {
 			//если пароли не сошлись

@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Успешная регистрация на NewLook</title>
@@ -41,7 +41,7 @@
         exit ("<p class='reg_success'>Извините, введённый вами логин уже зарегистрирован. Введите другой логин или войдите.</p><br><form action='reg.php' class='error_reg'><input class='form_butt' type=submit value='Зарегестрироваться'></form><br><form action='login.php' class='error_reg'><input class='form_butt' type=submit value='Войти'></form>");
     }
  // если такого нет, то сохраняем данные
-    $result2 = mysql_query ("INSERT INTO users (login,password) VALUES('$login','$password')");
+    $result2 = mysql_query ("INSERT INTO users (login,password_md5) VALUES('$login','".md5($password)."')");
     // Проверяем, есть ли ошибки
 	include("../menu.html");
     if ($result2=='TRUE')

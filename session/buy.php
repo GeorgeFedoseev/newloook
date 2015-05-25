@@ -11,11 +11,17 @@
     <link rel="stylesheet" href="/lib/ion.rangeSlider-2.0.6/css/ion.rangeSlider.css">
     <link rel="stylesheet" href="/lib/ion.rangeSlider-2.0.6/css/ion.rangeSlider.skinFlat.css">
     
+    <link rel="stylesheet" href="/lib/fullcalendar-2.3.1/fullcalendar.css">
+    
+    
     <script src="/css/js/jquery.js"></script>
     <script src="/lib/onsenui/js/angular/angular.min.js"></script>
     <script src="/lib/onsenui/js/onsenui.js"></script>
     
     <script src="/lib/ion.rangeSlider-2.0.6/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+    
+    <script src="/lib/moment-with-locales.js"></script>
+    <script src="/lib/fullcalendar-2.3.1/fullcalendar.js"></script>
     
     
     <script src="buy.js"></script>
@@ -79,7 +85,6 @@
                             <button ng-click="decr_people_num()"><i class="fa fa-minus"></i></button>
                             <div class="b_people_number">{{order.people_number}}</div>
                             <button ng-click="incr_people_num()"><i class="fa fa-plus"></i></button>
-
                         </div>
                     </div>
 
@@ -136,6 +141,16 @@
                         <div class="b_card_desc"><span>{{location.comment}}</span></div>                    
                     </div>
                     
+                    <div class="b_notice">
+                        <sup>*</sup>Стоимость локаций и студий 
+                        может изменяться и варьироваться. Вы можете
+                        уточнить цену на сайте локации/студии
+                        или связавшись с нами.
+                        <br>
+                        Также цена будет перепроверена при конечном 
+                        подсчете стоимости администратором.
+                    </div>
+                    
                     <div class="b_buttons">                    
                         <button class="b_left b_nav_button"                                
                                 ng-click="back()">Назад</button>
@@ -180,7 +195,15 @@
                             </div>  
                             
                             <div class="b_notice">
+                                <sup>*</sup>Стоимость локаций и студий 
+                                может изменяться и варьироваться. Вы можете
+                                уточнить цену на сайте локации/студии
+                                или связавшись с нами.
+                                <br>
+                                Также цена будет перепроверена при конечном 
+                                подсчете стоимости администратором.
                             </div>
+                            
                         </div>
                         
                         
@@ -202,13 +225,116 @@
                     
                     <div style="clear: both"></div>
                     
-                    
-                    
                     <div class="b_buttons">                    
                         <button class="b_left b_nav_button"                                
                                 ng-click="back()">Назад</button>
                         <button class="b_nav_button centered"                                
                                 ng-click="suggested_locations()">Подборка локаций</button>
+                        <button class="b_right b_nav_button"
+                                ng-class="{disabled: !next_button_active}"
+                                ng-click="next()">Далее</button>
+                    </div>
+                </div>
+            </ons-page>
+        </ons-template>
+        
+        
+        <ons-template id="AdditionalServices.html">
+            <ons-page ng-controller="BuyAdditionalServicesCtrl">
+                <div class="b_additionalServices b_page">
+                    <div class="b_card">
+                        <div class="b_card_title">Услуги визажиста</div>
+                        <div class="b_card_pic"
+                             style="background-image:url(assets/images/additional_services/1.jpg);"
+                             ></div>
+                        <div class="b_card_desc"><span>
+                            Наш специалист может сделать вам специальный макияж
+                            под стиль фотосесиии, учитывая Ваши пожелания.
+                            <br>
+                            Стоимость: 800 р.
+                            <div class="b_controls">
+                                <button ng-click="decr_visagist()"><i class="fa fa-minus"></i></button>
+                                <div class="b_service_num">{{order.visagist}}</div>
+                                <button ng-click="incr_visagist()"><i class="fa fa-plus"></i></button>
+                            </div>
+                            </span></div> 
+                    </div>
+                    
+                    <div class="b_card">
+                        <div class="b_card_title">Услуги стилиста</div>
+                        <div class="b_card_pic"
+                             style="background-image:url(assets/images/additional_services/2.jpg);"
+                             ></div>
+                        <div class="b_card_desc"><span>
+                            Стилист приведет Ваши волосы в порядок
+                            и сделает подходящую прическу.
+                            <br>
+                            Стоимость: 700 р.
+                            <div class="b_controls">
+                                <button ng-click="decr_stylist()"><i class="fa fa-minus"></i></button>
+                                <div class="b_service_num">{{order.stylist}}</div>
+                                <button ng-click="incr_stylist()"><i class="fa fa-plus"></i></button>
+                            </div>
+                            </span></div> 
+                        
+                            
+                        
+                    </div>
+                    
+                    <div class="b_notice">
+                        Время на подготовку не учитывается при бронировании
+                        съемки и расчете часов.
+                        Рассчитывайте Ваше время правильно, каждому специалисту
+                        нужно около часа времени, чтобы качественно выполнить свою работу.
+                        Точное время и мето встречи будет оговорено 
+                        в разговоре с нашим оператором.
+                    </div>
+                    
+                    <div class="b_buttons">                    
+                        <button class="b_left b_nav_button"                                
+                                ng-click="back()">Назад</button>
+                        
+                        <button class="b_right b_nav_button"
+                                ng-class="{disabled: !next_button_active}"
+                                ng-click="next()">Далее</button>
+                    </div>
+                </div>
+            </ons-page>
+        </ons-template>
+        
+        <ons-template id="Time.html">
+            <ons-page ng-controller="BuyTimeCtrl">
+                <div class="b_time b_page">
+                    
+                    <div id="fullcalendar"></div>
+                    
+                    <div class="b_buttons">                    
+                        <button class="b_left b_nav_button"                                
+                                ng-click="back()">Назад</button>
+                        <button class="b_right b_nav_button"
+                                ng-class="{disabled: !next_button_active}"
+                                ng-click="next()">Далее</button>
+                    </div>
+                </div>
+            </ons-page>
+        </ons-template>
+        
+        <ons-template id="NameTel.html">
+            <ons-page ng-controller="BuyNameTelCtrl">
+                <div class="b_nametel b_page">
+                    
+                    <h2>ФИО:</h2>
+                    <input type="text"
+                           ng-class="{wrong: wrongName, good: goodName}"
+                           ng-model="order.name" ng-change="change()" />
+                    <h2>Телефон:</h2>
+                    <input type="tel"
+                           ng-class="{wrong: wrongNumber, good: goodNumber}"
+                           ng-model="order.tel" ng-change="change()" />
+                    <br><br><br>
+                    <div class="b_buttons">                    
+                        <button class="b_left b_nav_button"                                
+                                ng-click="back()">Назад</button>
                         <button class="b_right b_nav_button"
                                 ng-class="{disabled: !next_button_active}"
                                 ng-click="next()">Далее</button>

@@ -140,11 +140,20 @@
 
 .b_page{
     position: relative;
+    max-width: 750px;
     padding: 20px;
     margin: 0 auto;
     text-align: center;
     background: white;
 }
+
+.b_notice{
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: left;
+    padding: 0 20px 0 20px
+}
+
 
 
 /* PAGE-SPECIFIC */
@@ -231,13 +240,13 @@
 }
 
 .b_search_left{
-    width: 250px;
+    width: 200px;
     display: inline-block;
-    
+    padding-right: 50px;
 }
 
 .b_searchbox{
-    float: left;;
+    float: left;
     text-align: left;
     box-sizing: border-box;
     padding: 15px;
@@ -260,8 +269,10 @@
     max-height: 200px;
 }
 
-.b_notice{
-    
+.b_search_left .b_notice{
+    padding: 0 10px 0 10px;
+    display: inline-block;
+    text-align: justify;
 }
 
 .b_search_results{
@@ -299,6 +310,85 @@
     top: 0;
     transform: none;
 }
+
+/* ADDITIONAL SERVICES */
+.b_additionalServices {
+    
+}
+
+.b_additionalServices .b_card {
+    position: relative;
+    width: 300px;    
+    vertical-align: top;
+    height: 330px;
+}
+
+.b_additionalServices .b_card:hover{
+    box-shadow: none;
+}
+
+.b_additionalServices .b_card .b_card_pic {
+    height: 150px;
+    background-position: 0 -20px;    
+}
+
+.b_additionalServices .b_card .b_card_desc {    
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 120px;
+} 
+
+
+.b_additionalServices .b_controls {
+    margin-top: 10px;
+}
+
+.b_additionalServices .b_service_num {
+    display: inline-block;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.b_additionalServices .b_card .b_card_desc span{
+     position: relative;
+     display: inline-block;
+     top: 50%;
+     transform: translateY(-50%);
+}
+
+
+/* SELECT TIME */
+.b_time{
+}
+
+.b_time #fullcalendar{
+    
+}
+
+/* NAME TEL */
+
+.b_nametel{
+}
+
+.b_nametel input{
+    font-size: 20px;
+    width: 360px;
+    padding: 10px;
+    border: 1px solid gray;
+    transition: 1s all ease;
+}
+
+.b_nametel input.wrong{
+    border: 1px solid #ff5f5f;
+    box-shadow: 0px 0px 15px #ff5f5f;
+}
+
+.b_nametel input.good{
+    border: 1px solid rgba(60, 188, 14, 0.49);
+    box-shadow: 0px 0px 20px rgba(60, 177, 18, 0.64);
+}
+
 
 
 
