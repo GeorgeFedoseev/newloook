@@ -7,4 +7,5 @@
 			<button type=submit  formaction='adm_projects.php' class='form_butt' value='Фотопроекты'>Фотопроекты</button>
 			<button type=submit  formaction='adm_shedule.php' class='form_butt' value='Расписание'>Расписание</button>
 			<button type=submit  formaction='adm_office.php' class='form_butt' value='Личный кабинет'>Личный кабинет</button>
+            <button type=submit formaction='adm_orders.php' class='form_butt' value='Портфолио'>Заказы</button>
 		</form></p>

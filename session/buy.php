@@ -1,3 +1,6 @@
+<?
+session_start();
+?>
 <html>
 <head>
 <title> 
@@ -13,6 +16,7 @@
     
     <link rel="stylesheet" href="/lib/fullcalendar-2.3.1/fullcalendar.css">
     
+    <script src="/lib/prefixfree.min.js"></script>
     
     <script src="/css/js/jquery.js"></script>
     <script src="/lib/onsenui/js/angular/angular.min.js"></script>
@@ -22,18 +26,24 @@
     
     <script src="/lib/moment-with-locales.js"></script>
     <script src="/lib/fullcalendar-2.3.1/fullcalendar.js"></script>
+    <script src="/lib/fullcalendar-2.3.1/gcal.js"></script>
     
     
     <script src="buy.js"></script>
     
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="user-scalable=yes, initial-scale=1, width=device-width, target-densitydpi=device-dpi" />
 	
 </head>
     <body ng-app="buy">
         <? 
         include('../menu.html'); 
         include("../bd.php");
+
+if(isset($_SESSION['login'])){
         ?>
+        
+        <br>
         
         <ons-page class="b_main_page"  ng-controller="MainCtrl">
             <div class="b_main">
@@ -132,7 +142,7 @@
                 <div class="b_location b_page">
                     <div class="b_card" 
                          ng-repeat="location in locations"
-                         ng-click="select(location.id_location, $event)"
+                         ng-click="select(location.id_location, $event, location.name)"
                          >
                         <div class="b_card_title">{{location.name}}</div>
                         <div class="b_card_pic"
@@ -182,7 +192,7 @@
                         <div class="b_search_left">
                             <div class="b_searchbox">
                                 <h3>Поиск</h3>
-                                <div class="label">Цена за час</div>
+                                <div class="label"><span ng-show="location_type!=2">Входная цена</span><span ng-show="location_type==2">Цена за час</span></div>
                                 <input type="text" id="b_price_range"  value="" />
                                 <div class="label">Ближайшее метро</div>
                                 <select ng-model="closest_subway" ng-change="search()">
@@ -210,7 +220,7 @@
                         <div class="b_search_results">
                             <div class="b_card" 
                                  ng-repeat="location in locations"
-                                 ng-click="select(location.id_location, $event)"
+                                 ng-click="select(location.id_location, $event, location.name)"
                                  >
                                 <div class="b_card_title">{{location.name}}</div>
                                 <div class="b_card_pic"
@@ -342,6 +352,94 @@
                 </div>
             </ons-page>
         </ons-template>
+        
+        <ons-template id="Check.html">
+            <ons-page ng-controller="BuyCheckCtrl">
+                <div class="b_check b_page">
+                    
+                    <div class="b_cheque">
+                        <div><b>ФИО:</b> {{order.name}}</div>
+                        <div><b>Телефон:</b> {{order.tel}}</div>
+                        <div><b>Тип:</b> {{ruType[order.type]}}</div>
+                        <div><b>Количество человек:</b> 
+                            <div class="b_controls">
+                                <button ng-click="decr_people_num()"><i class="fa fa-minus"></i></button>
+                                <div class="b_cheque_num">{{order.people_number}}</div>
+                                <button ng-click="incr_people_num()"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div><b>Стиль:</b> {{ruStyle[order.style-1]}}</div>
+                        <div><b>Место:</b> {{selectedLocationRu}} <span class="cost">{{cost.location_price}}р.</span></div>
+                        <div><b>Количество часов:</b> 
+                            <div class="b_controls">
+                                <button ng-click="decr_hours()"><i class="fa fa-minus"></i></button>
+                                <div class="b_cheque_num">{{order.hours}}</div>
+                                <button ng-click="incr_hours()"><i class="fa fa-plus"></i></button>
+                            </div>
+                            
+                            <span class="cost">{{cost.main_service_price}}р.</span>
+                        </div>
+                        <div><b>Визажист:</b> 
+                            <div class="b_controls">
+                                <button ng-click="decr_visagist()"><i class="fa fa-minus"></i></button>
+                                <div class="b_cheque_num">{{order.visagist}}</div>
+                                <button ng-click="incr_visagist()"><i class="fa fa-plus"></i></button>
+                            </div>
+                            
+                            <span class="cost">{{cost.visagist_price}}р.</span>
+                        </div>
+                        <div><b>Стилист:</b> 
+                            <div class="b_controls">
+                                <button ng-click="decr_stylist()"><i class="fa fa-minus"></i></button>
+                                <div class="b_cheque_num">{{order.stylist}}</div>
+                                <button ng-click="incr_stylist()"><i class="fa fa-plus"></i></button>
+                            </div>
+                            
+                            <span class="cost">{{cost.stylist_price}}р.</span>
+                        </div>
+                        <div><b>Дата:</b> {{dateFormatted}}</div>
+                        <div><b>Время начала съемки:</b> {{order.time}}</div>
+                        <div><b>ИТОГ:</b> {{cost.total}}р.</div>
+                    </div>
+                    
+                    <div class="b_buttons">                    
+                        <button class="b_left b_nav_button"                                
+                                ng-click="back()">Назад</button>
+                        <button class="b_right b_nav_button"                                
+                                ng-click="done()">Готово</button>
+                    </div>
+                </div>
+            </ons-page>
+        </ons-template>
+        
+        <ons-template id="Done.html">
+            <ons-page ng-controller="BuyDoneCtrl">                
+                <div class="b_done b_page">
+                    <div class="b_thank">
+                        Спасибо, что выбрали нас!
+                        <br>
+                        Наш оператор перезвонит Вам!
+                    </div>
+                    <div class="b_buttons">                    
+                        <button class="b_left b_nav_button centered"                                
+                                ng-click="toMainPage()">На главную</button>
+                        
+                    </div>                
+                </div>
+            </ons-page>
+        </ons-template>
+    
+<?
+    
+    }else{
+    
+    $_SESSION["after_login"] = "/session/buy.php";
+?>
+        <meta http-equiv="refresh" content="0; url=/login/login.php" /> 
+<?
+    }
+?>
+    
         
         
     </body> 

@@ -60,3 +60,34 @@ background: white;'
 .form_inline{
 	display: inline;
 }
+
+
+.adm_ordes_container{
+    margin-top: 200px;
+    padding: 20px;
+}
+
+.adm_order{
+    width: 500px;
+    background: #e5e5e5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.adm_order .title{
+    font-size: 30px;
+    
+}
+
+.adm_order .desc{
+    display: inline-block;
+    float: left;
+}
+
+.adm_order .status{
+    display: inline-block;
+    float: right;
+    font-size: 20px;
+    text-align: right;
+}

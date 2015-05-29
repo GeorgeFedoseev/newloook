@@ -1,6 +1,6 @@
 @font-face {
-    font-family: GroticCn; /* √‡ÌËÚÛ‡ ¯ËÙÚ‡ */
-    src: url(fonts/a_groticcn.ttf); /* œÛÚ¸ Í Ù‡ÈÎÛ ÒÓ ¯ËÙÚÓÏ */
+    font-family: GroticCn; /* –ì–∞—Ä–Ω–∏—Ç—É—Ä–∞ —à—Ä–∏—Ñ—Ç–∞ */
+    src: url(fonts/a_groticcn.ttf); /* –ü—É—Ç—å –∫ —Ñ–∞–π–ª—É —Å–æ —à—Ä–∏—Ñ—Ç–æ–º */
    }
  a{
 	text-decoration: none;
@@ -19,8 +19,7 @@ a{
 	position:fixed;
 	top: 0px;
 	width: 100%;
-	height: 45px;
-	min-width: 1200px;
+	height: 45px;	
 	z-index: 999;
 }
 #header:hover{
@@ -52,13 +51,44 @@ a{
 	transition: 0s;
 	margin-right: 10px;
 }
-.menu{
 
-	text-align:right;
-	margin-top: -43px;
-	font-weight: bold;
-	margin-right: 50px;
+@media (min-width: 1225px) {
+    .menu{
+        font-family: GroticCn;
+        font-size: 1.4em;
+        text-align:right;
+        margin-top: -43px;
+        font-weight: bold;
+        margin-right: 50px;
+    }
 }
+
+@media (max-width: 1225px) {
+    .menu{
+        position: relative;
+        font-family: GroticCn;
+        font-size: 1.4em;
+        display: block;
+        text-align:left;        
+        font-weight: bold;
+        padding-left: 103px;
+        padding-bottom: 10px;        
+        padding-right: 50px;
+    }
+    
+    #header{
+        background: #FFFFFF;
+        opacity: 0.8;
+        position:fixed;
+        top: 0px;
+        width: 100%;
+        height: auto;	
+        z-index: 999;                
+    }
+    
+    
+}
+
 
 #slider{
 	margin-top: -20px;
@@ -86,7 +116,7 @@ img.slider_sea{
 }
 input[type="text"]:focus { outline: none; }
 
-.form1{ /*Õ‡ÒÚÓÈÍ‡ ÙÓÏ˚*/
+.form1{ /*–ù–∞—Å—Ç—Ä–æ–π–∫–∞ —Ñ–æ—Ä–º—ã*/
 	outline:none;
 	margin-left:5px;	
 	border-bottom-left-radius:10px;
@@ -104,7 +134,7 @@ input[type="text"]:focus { outline: none; }
 	margin-top: 10px;
 }
 
-.button { /*Õ‡ÒÚÓÈÍ‡ ÍÌÓÔÍË ÔÂ‚ÓÈ ÙÓÏ˚*/
+.button { /*–ù–∞—Å—Ç—Ä–æ–π–∫–∞ –∫–Ω–æ–ø–∫–∏ –ø–µ—Ä–≤–æ–π —Ñ–æ—Ä–º—ã*/
 	width: 178px;
 	height: 37px;
 	margin-top: 10px;
@@ -129,7 +159,7 @@ input[type="text"]:focus { outline: none; }
 	position: relative;
 	top: 1px;
 }
-.orange { /*Õ‡ÒÚÓÈÍ‡ ˆ‚ÂÚ‡ ÔÂ‚ÓÈ ÍÌÓÔÍË*/
+.orange { /*–ù–∞—Å—Ç—Ä–æ–π–∫–∞ —Ü–≤–µ—Ç–∞ –ø–µ–≤–æ–π –∫–Ω–æ–ø–∫–∏*/
 	font-size: 20px;
 	color: #6895a8;
 	border: solid 3px #85a8b8;
@@ -161,15 +191,32 @@ p.slider_text_photosession{
 	font-size: 1.7em;
 	color: #60889c;
 }
-/*******************Õ‡¯Ë ÔÂ‰ÎÓÊÂÌËˇ**********************/
-.block_deals{
-	
+/*******************–ù–∞—à–∏ –ø—Ä–µ–¥–ª–æ–∂–µ–Ω–∏—è**********************/
+.block_deals{    
+	width: 100%;    
 }
+
+.block_deals>table{
+    width: 999px;
+    margin: 0 auto;
+}
+
+.block_benefits{
+    position: relative;
+    width: 100%;
+}
+
+.block_benefits>table{
+    width: 999px;
+    margin: 0 auto;
+}
+
 h1.block_h1{
 	position: absolute; 
 	left: 36%;
 	font-size: 60px;
 	font-weight: bold;
+    min-width: 600px;
 }
 .block_deals_table{
 }
@@ -185,7 +232,7 @@ h1.block_h1{
 	margin-top: -25px;
 	font-size: 20px;
 }
-/************¡ÀŒ  œ–≈»Ã”Ÿ≈—“¬¿**************/
+/************–ë–õ–û–ö –ü–†–ï–ò–ú–£–©–ï–°–¢–í–ê**************/
 .block_benef_img{
 	margin-top:150px;
 	

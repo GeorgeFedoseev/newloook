@@ -1,8 +1,13 @@
 var app = angular.module('buy', ['onsen']); 
 
+
+app.directive('unbindable', function(){
+    return { scope: true };
+});
+
 app.controller("MainCtrl", function($scope, $rootScope){    
    setTimeout(function(){
-       nav.pushPage("NameTel.html");  
+       nav.pushPage("Type.html");  
    }, 500);
    
     $rootScope.order = {
@@ -15,9 +20,31 @@ app.controller("MainCtrl", function($scope, $rootScope){
         florist: 0,
         date: "2015-05-25",
         time: "9:00",
-        hours: 1
+        hours: 1,
+        name: "",
+        tel: ""
         
     };
+    
+    $rootScope.ruType = {
+        "individual": "Индивидуальная",
+        "several": "Несколько человек",
+        "lovestory": "Love story",
+        "family": "Семейная"
+    };
+    
+    $rootScope.ruStyle = [
+        "Портрет",
+        "Гламур",
+        "Fashion",
+        "Casual",
+        "Pin up",
+        "Ретро",
+        "Треш",
+        "Рок"
+    ];
+    
+    $rootScope.selectedLocationRu = "Las Vegas";
     
     $rootScope.total_cost = 0;
     
@@ -32,7 +59,7 @@ app.controller("MainCtrl", function($scope, $rootScope){
             }
             
             console.log(data.cost);
-            
+            $rootScope.cost = data.cost;
             $rootScope.total_cost = data.cost.total;
             
             if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
@@ -172,7 +199,7 @@ app.controller("BuyLocationCtrl", function($scope, $rootScope, $element){
         }
     });
     
-    $scope.select = function(location_id, $event){
+    $scope.select = function(location_id, $event, locationRu){
         $card = $($event.target).closest(".b_card");
         
         
@@ -180,7 +207,7 @@ app.controller("BuyLocationCtrl", function($scope, $rootScope, $element){
         $card.addClass("selected");       
         
         $rootScope.order.location = parseInt(location_id);
-        
+        $rootScope.selectedLocationRu = locationRu;
         $scope.next_button_active = true;
         
         console.log($rootScope.order); 
@@ -291,7 +318,7 @@ app.controller("BuySearchLocationCtrl", function($scope, $rootScope, $element){
         });
     }
     
-    $scope.select = function(location_id, $event){
+    $scope.select = function(location_id, $event, locationRu){
         $card = $($event.target).closest(".b_card");
         
         
@@ -299,7 +326,7 @@ app.controller("BuySearchLocationCtrl", function($scope, $rootScope, $element){
         $card.addClass("selected");       
         
         $rootScope.order.location = parseInt(location_id);
-        
+        $rootScope.selectedLocationRu = locationRu;
         $scope.next_button_active = true;
         
         console.log($rootScope.order); 
@@ -376,9 +403,16 @@ app.controller("BuyTimeCtrl", function($scope, $rootScope, $element){
         }
     });
     
+    nav.on("postpush", function(){
+        if(nav.getCurrentPage().name == "Time.html"){
+            $('#fullcalendar').fullCalendar('render');
+        }
+    });
+    
     $scope.next_button_active = false;    
     
     var userCreatedEvent = [];
+    
     
     $('#fullcalendar').fullCalendar({
         height: 450,
@@ -393,76 +427,120 @@ app.controller("BuyTimeCtrl", function($scope, $rootScope, $element){
         slotEventOverlap: false,
         eventColor: '#ff5d5d',
         
-        
+        googleCalendarApiKey: 'AIzaSyBpRA0TVvVzxUyNQUFchpklIAgYcBEFWy8',
+        eventSources: [{
+             googleCalendarId: 'csel1ho0fodfqidbejg51tm9h8@group.calendar.google.com',  // DEBUG!
+             eventDataTransform : function(event){
+                 console.log("transform event");
+                 console.log(event);
+                 
+                 event.start = moment(event.start).parseZone();
+                 event.end = moment(event.end).parseZone();
+                 
+                 event.start = event.start.add(-event.start.zone(), 'minutes').zone(0);
+                 event.end = event.end.add(-event.end.zone(), 'minutes').zone(0);
+                 
+                 console.log(event.start.zone());
+                 
+                 return {
+                    title: event.title,
+                    own: false,
+                    start: event.start,
+                    end: event.end
+                 };
+             }
+        }],
+
+
         selectConstraint: {
             start: '00:00', 
             end: '24:00'
         },
         
-        
         selectable: true,
         selectOverlap: false,
         select: function(start, end, jsEvent, view) {
-            
+
             var hours = moment(end).diff(moment(start), 'hours');            
-            
-            var currentEvents = $('#fullcalendar').fullCalendar('clientEvents');            
+
+            var currentEvents = $('#fullcalendar').fullCalendar('clientEvents');    
+            console.log("Current events");
+            console.log(currentEvents);
+            console.log(start);
+            console.log(end);
             for(var k in currentEvents){
-                var event = currentEvents[k];
+                var event = currentEvents[k];                
+                
                 if(!event.own){
                     console.log(end.format());
                     console.log(event.start.format());
                     console.log(moment(event.start).diff(moment(end), 'hours'));
                     var diff_to_event_start = moment(event.start).diff(moment(end), 'hours');                    
                     if(diff_to_event_start >= 0 && diff_to_event_start < 1){
-                        alert("Это время слишком близко к следующей фотосессии");
+                        alert("Это время слишком близко к занятому времени");
                         $('#fullcalendar').fullCalendar('unselect')
                         return;
                     }
-                    
+
                     var diff_to_event_end = moment(start).diff(moment(event.end), 'hours');
                     if(diff_to_event_end >= 0 && diff_to_event_end < 1){
-                        alert("Это время слишком близко к предыдущей фотосессии");
+                        alert("Это время слишком близко к занятому времени");
                         $('#fullcalendar').fullCalendar('unselect')
                         return;
-                    }                    
-                }
+                    }  
+                }                
+                  
             }
             
+            var diff_to_now = moment(start).diff(moment(new Date()), 'weeks');
+            console.log("weeks to event: "+diff_to_now);
+            if(diff_to_now > 3){
+                alert("Пожалуйста, выберите дату не далее 3х недель от сегодяшней.");
+                $('#fullcalendar').fullCalendar('unselect')
+                return;
+            }  
             
+            var diff_to_now_days = moment(start).diff(moment(new Date()).startOf("day"), 'days');
+            console.log("days to event: "+diff_to_now_days);
+            if(diff_to_now_days < 1){
+                alert("Пожалуйста, выберите дату, начиная с завтрашнего дня.");
+                $('#fullcalendar').fullCalendar('unselect')
+                return;
+            }
+
+
             if(userCreatedEvent.length != 0){
                 $('#fullcalendar').fullCalendar('removeEventSource', userCreatedEvent);
             }
-            
+
             userCreatedEvent = [
                 {
-					title: 'Ваша фотосессия',
+                    title: 'Ваша фотосессия',
                     own: true,
-					start: start,
-					end: end,
+                    start: start,
+                    end: end,
                     color: '#006bba'
-				}
+                }
             ];
-            
+
             $rootScope.order.date = start.format('YYYY-MM-DD');
             $rootScope.order.time = end.format("H:mm");
             $rootScope.order.hours = hours;
-            
+
             console.log($rootScope.order);
-            
+
             $('#fullcalendar').fullCalendar('addEventSource', userCreatedEvent);
-            
+
             $scope.next_button_active = true; 
-            
+
             $rootScope.recalculateCost();
-            
+
              if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
                 $scope.$apply();
             }
         }       
     }); // fullcalendar
-    
-    
+
     $.get("buy_api.php?req=events", function(data){
         data = JSON.parse(data);
         var fc_events = [];
@@ -470,7 +548,7 @@ app.controller("BuyTimeCtrl", function($scope, $rootScope, $element){
             var event = data.events[k];
             var start = moment(event.date_order).add(moment.duration(event.time_order)).zone(0);
             var end = start.clone().add(event.amount_hours, 'hours').zone(0);
-            
+
             console.log("ADD EVENT: "+start.format()+" - "+end.format());
             fc_events.push({
                 title: "Забронировано",
@@ -479,9 +557,9 @@ app.controller("BuyTimeCtrl", function($scope, $rootScope, $element){
                 end: end
             });
         }
-        
+
         $('#fullcalendar').fullCalendar('addEventSource', fc_events);
-        
+
         console.log(data);
     });
     
@@ -561,7 +639,7 @@ app.controller("BuyNameTelCtrl", function($scope, $rootScope, $element){
     }
     
     $scope.next = function(){
-        nav.pushPage("Location.html");
+        nav.pushPage("Check.html");
     }
     
     $scope.back = function(){
@@ -570,9 +648,102 @@ app.controller("BuyNameTelCtrl", function($scope, $rootScope, $element){
     
 });
 
+app.controller("BuyCheckCtrl", function($scope, $rootScope, $element){    
+    $rootScope.main_title = "Проверьте выбранные данные";
+    
+    nav.on("postpop", function(){        
+        if(nav.getCurrentPage().name == "Check.html"){
+            $rootScope.main_title = "Проверьте выбранные данные";                
+            $scope.$apply();                        
+        }
+    });
+    
+    $rootScope.recalculateCost();
+    
+    $scope.dateFormatted = moment($rootScope.order.date).format("D.MM.YYYY");
+    console.log($scope.dateFormatted);
+    
+    $scope.incr_people_num = function(){
+        $rootScope.order.people_number++;
+        $rootScope.recalculateCost();
+    }
+    
+    $scope.decr_people_num = function(){
+        if($rootScope.order.people_number > 1){
+            $rootScope.order.people_number--;            
+        }
+        
+        $rootScope.recalculateCost();
+    }
+    
+    $scope.incr_visagist = function(){
+        $rootScope.order.visagist++;
+        $rootScope.recalculateCost();
+    }
+    
+    $scope.decr_visagist = function(){
+        if($rootScope.order.visagist > 0){
+            $rootScope.order.visagist--;            
+        }        
+        $rootScope.recalculateCost();
+    }
+    
+    $scope.incr_stylist = function(){
+        $rootScope.order.stylist++;
+        $rootScope.recalculateCost();
+    }
+    
+    $scope.decr_stylist = function(){
+        if($rootScope.order.stylist > 0){
+            $rootScope.order.stylist--;            
+        }
+        
+        $rootScope.recalculateCost();
+    }
+    
+    $scope.incr_hours = function(){
+        $rootScope.order.hours++;
+        $rootScope.recalculateCost();
+    }
+    
+    $scope.decr_hours = function(){
+        if($rootScope.order.hours > 1){
+            $rootScope.order.hours--;            
+        }
+        
+        $rootScope.recalculateCost();
+    }
+
+    $scope.back = function(){
+        nav.popPage();
+    }
+    
+    $scope.done = function(){
+        $.post("buy_api.php?req=add_order", {
+            order: JSON.stringify($rootScope.order)
+        }, function(data){
+            data = JSON.parse(data);
+            console.log(data);
+            
+            if(!data.error){
+                nav.resetToPage("Done.html");
+            }
+        });
+    }
+
+});
 
 
-
+app.controller("BuyDoneCtrl", function($scope, $rootScope, $element){    
+    $rootScope.main_title = "Готово!";
+    
+    $(".b_cart").hide();
+    
+    $scope.toMainPage = function(){
+        location.href = "/"
+    }
+    
+});
 
 
 

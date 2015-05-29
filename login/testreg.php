@@ -50,8 +50,16 @@
 			$_SESSION['id_user']=$myrow['id_user'];
 			$_SESSION['role']=$myrow['role'];//эти данные очень часто используются, вот их и будет "носить с собой" вошедший пользователь
 			include("../menu.html");
-			echo "<p class='reg_success'>Вы успешно вошли на сайт! Вы будете перенаправлены на главную страницу через несколько секунд <br> <a href='../index.php' class='href_reg'>Главная страница</a></p>";
-			echo "<script Language=\"JavaScript\"> setTimeout(\"document.location='../index.php'\", 2000); </script>";
+			
+                if(!isset($_SESSION["after_login"])){
+                    echo "<p class='reg_success'>Вы успешно вошли на сайт! Вы будете перенаправлены на главную страницу через несколько секунд <br> <a href='../index.php' class='href_reg'>Главная страница</a></p>";
+                    echo "<script Language=\"JavaScript\"> setTimeout(\"document.location='../index.php'\", 2000); </script>";        
+                }else{
+                    echo "<p class='reg_success'>Вы успешно вошли на сайт! Вы будете перенаправлены на запрошенную страницу через несколько секунд <br> <a href='../index.php' class='href_reg'>Главная страница</a></p>";
+                    echo "<script Language=\"JavaScript\"> setTimeout(\"document.location='".$_SESSION["after_login"]."'\", 2000); </script>";        
+                    unset($_SESSION["after_login"]);
+                }
+			
 			}
 		 else {
 			//если пароли не сошлись
