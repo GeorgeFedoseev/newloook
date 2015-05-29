@@ -29,7 +29,7 @@
         
         require_once("../session/buy_helpers.php");
         
-        $query_user_orders = mysql_query("SELECT * FROM order_photosession ORDER BY date_order");
+        $query_user_orders = mysql_query("SELECT * FROM order_photosession ORDER BY date_order, time_order");
         if($query_user_orders){
             ?>
             <h1>Заказы</h1>

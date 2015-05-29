@@ -443,7 +443,7 @@ app.controller("BuyTimeCtrl", function($scope, $rootScope, $element){
                  console.log(event.start.zone());
                  
                  return {
-                    title: event.title,
+                    title: "Забронировано",
                     own: false,
                     start: event.start,
                     end: event.end
@@ -524,7 +524,7 @@ app.controller("BuyTimeCtrl", function($scope, $rootScope, $element){
             ];
 
             $rootScope.order.date = start.format('YYYY-MM-DD');
-            $rootScope.order.time = end.format("H:mm");
+            $rootScope.order.time = start.format("H:mm");
             $rootScope.order.hours = hours;
 
             console.log($rootScope.order);
@@ -541,7 +541,7 @@ app.controller("BuyTimeCtrl", function($scope, $rootScope, $element){
         }       
     }); // fullcalendar
 
-    $.get("buy_api.php?req=events", function(data){
+    /*$.get("buy_api.php?req=events", function(data){
         data = JSON.parse(data);
         var fc_events = [];
         for(var k in data.events){
@@ -561,7 +561,7 @@ app.controller("BuyTimeCtrl", function($scope, $rootScope, $element){
         $('#fullcalendar').fullCalendar('addEventSource', fc_events);
 
         console.log(data);
-    });
+    });*/
     
     
     $scope.next = function(){

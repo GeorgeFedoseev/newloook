@@ -81,7 +81,7 @@ if(isset($_GET["req"])){
          case "approve_order":
             $error = approveOrder($_GET["order"]);
             if(!$error){
-               // echo "<script>history.back();</script>";
+                echo "<script>history.back();</script>";
             }else{
                 echo $error;
             }
@@ -165,7 +165,7 @@ function addToGoogleCalendar($order){
     
     $description = getOrderDescription($order);
     $summary = getOrderSummary($order);
-    print_r($summary);
+    //print_r($summary);
     
     date_default_timezone_set("Europe/Moscow");
     
@@ -175,7 +175,7 @@ function addToGoogleCalendar($order){
     $start = new Google_Service_Calendar_EventDateTime();
     $startDateTime = new DateTime($order->date_order.' '.$order->time_order);
     $start->setDateTime($startDateTime->format("c"));    
-    print_r($startDateTime->format("c"));
+    //print_r($startDateTime->format("c"));
     $event->setStart($start);
     $end = new Google_Service_Calendar_EventDateTime();
     $endDateTime = $startDateTime->add(new DateInterval('PT' . $order->amount_hours . 'H'));

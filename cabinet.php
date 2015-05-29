@@ -33,7 +33,7 @@
         require_once("session/buy_helpers.php");
         
         $query_user_orders = mysql_query("SELECT * FROM order_photosession
-                                                WHERE id_user = ".$_SESSION['id_user']." ORDER BY date_order");
+                                                WHERE id_user = ".$_SESSION['id_user']." ORDER BY date_order, time_order");
 if(mysql_num_rows($query_user_orders)){
     ?>
     <h1>Ваши заказы</h1>
