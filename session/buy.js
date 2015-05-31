@@ -13,7 +13,7 @@ app.controller("MainCtrl", function($scope, $rootScope){
     $rootScope.order = {
         type: "individual",
         people_number: 1,
-        style: 1,
+        style: 9,
         location: 2,
         stylist: 0,
         visagist: 0,
@@ -41,7 +41,8 @@ app.controller("MainCtrl", function($scope, $rootScope){
         "Pin up",
         "Ретро",
         "Треш",
-        "Рок"
+        "Рок",
+        "Не задан"
     ];
     
     $rootScope.selectedLocationRu = "Las Vegas";
@@ -68,6 +69,19 @@ app.controller("MainCtrl", function($scope, $rootScope){
         });
     }
     
+    
+    $(".b_cart").webuiPopover({
+        title:'Корзина',
+        placement: 'bottom-left',
+        width: 400
+    });
+    
+    $scope.showCartContents = function(){
+        $(".webui-popover-content").html($("#cart_popover_content").html());        
+        if(!$rootScope.cost){
+            $(".b_cart").webuiPopover("hide");
+        }
+    }
 });
 
 app.controller("BuyTypeCtrl", function($scope, $rootScope, $element){    
@@ -429,7 +443,7 @@ app.controller("BuyTimeCtrl", function($scope, $rootScope, $element){
         
         googleCalendarApiKey: 'AIzaSyBpRA0TVvVzxUyNQUFchpklIAgYcBEFWy8',
         eventSources: [{
-             googleCalendarId: 'csel1ho0fodfqidbejg51tm9h8@group.calendar.google.com',  // DEBUG!
+             googleCalendarId: 'vljoi4qf5id2d8l03te1km7fd4@group.calendar.google.com', 
              eventDataTransform : function(event){
                  console.log("transform event");
                  console.log(event);

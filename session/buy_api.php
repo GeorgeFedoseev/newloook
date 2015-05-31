@@ -145,7 +145,7 @@ function addToGoogleCalendar($order){
     $key_file_location = $_SERVER['DOCUMENT_ROOT'].'/lib/newlookcal-cd82dde912b9.json';
 
     // Calendar id
-    $calName = 'csel1ho0fodfqidbejg51tm9h8@group.calendar.google.com'; // DEBUG!
+    $calName = 'vljoi4qf5id2d8l03te1km7fd4@group.calendar.google.com'; 
 
 
     $client = new Google_Client();

@@ -16,6 +16,8 @@ session_start();
     
     <link rel="stylesheet" href="/lib/fullcalendar-2.3.1/fullcalendar.css">
     
+    <link rel="stylesheet" href="/lib/webui-popover/jquery.webui-popover.min.css">
+    
     <script src="/lib/prefixfree.min.js"></script>
     
     <script src="/css/js/jquery.js"></script>
@@ -27,6 +29,8 @@ session_start();
     <script src="/lib/moment-with-locales.js"></script>
     <script src="/lib/fullcalendar-2.3.1/fullcalendar.js"></script>
     <script src="/lib/fullcalendar-2.3.1/gcal.js"></script>
+    
+    <script src="/lib/webui-popover/jquery.webui-popover.min.js"></script>
     
     
     <script src="buy.js"></script>
@@ -49,17 +53,37 @@ if(isset($_SESSION['login'])){
             <div class="b_main">
                 <div class="b_header">
                     <h2>{{main_title}}</h2>
-                    <div class="b_cart">
+                    <div class="b_cart" ng-click="showCartContents()">
                         <i class="b_cart_icon fa fa-shopping-cart"></i>
                         <div class="b_cart_cost">{{total_cost}}</div>
                     </div>
+                    
+                    <div id="cart_popover_content" style="display:none;position:absolute;">    
+                        <div class="cart_cheque" ng-show="cost != undefined"> 
+                            <div class="row"><div class="pos">Работа фотографа:</div><div class="val">{{cost.main_service_price/order.people_number}}x{{order.people_number}}чел.x{{order.hours}}ч.={{cost.main_service_price}}р.</div></div>                            
+                            <div class="row"><div class="pos">Место:</div><div class="val">{{cost.location_price}}р.</div></div>
+                            
+                            <div class="row"><div class="pos">Визажист ({{order.visagist}}):</div><div class="val">{{cost.visagist_price}}р.</div></div>
+                            <div class="row"><div class="pos">Стилист ({{order.stylist}}):</div><div class="val">{{cost.stylist_price}}р.</div></div>
+                            
+                            <div class="row"><div class="pos">ИТОГ:</div><div class="val">{{cost.total}}р.</div></div>
+                        </div>
+                    </div>
+                    
                 </div>
                 <ons-navigator class="b_nav" var="nav" animation="fade">                
                 </ons-navigator> 
+                
+                
+                  
+
+
 
             </div>
         </ons-page>
         
+        
+
         
         <ons-template id="Type.html">
             <ons-page ng-controller="BuyTypeCtrl">

@@ -123,6 +123,7 @@
 
 .b_cart {
     float: right;
+    cursor: pointer;
 }
 
 .b_cart_icon {
@@ -136,6 +137,44 @@
 }
 
 
+.cart_cheque{
+    
+}
+
+.cart_cheque .row{
+    display: block;
+    width: 100%;
+    clear: both;
+    
+    line-height: 30px;
+}
+
+.cart_cheque .pos{    
+    font-size: 22px;
+    float: left;
+}
+
+.cart_cheque .val{
+    display: block;
+    font-size: 20px;    
+    float: right;
+}
+
+.cart_cheque_hidden{    
+    display: block;
+    text-align: center;
+    font-size: 25px;
+}
+
+
+h3.webui-popover-title{
+    font-size: 25px;
+    padding: 15px;
+}
+
+div.webui-popover-content{
+    padding-left: 20px;
+}
 
 
 .b_page{
