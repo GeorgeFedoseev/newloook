@@ -1,1 +1,1 @@
-[website](lightsocial.net)
+[website](http://lightsocial.net/)
